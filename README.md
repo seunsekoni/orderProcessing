@@ -1,6 +1,8 @@
 ## How to run the application
 - Clone or unzip the repository
 - Change directory from a terminal and run `cd path/ofThe/Repository/Folder`
+- Rename the `.env.example` file to `.env`
+- Run `php artisan key:generate` to generate an app key
 - Run composer install
 - Run php artisan migrate
 - Start the server: `php artisan serve`
