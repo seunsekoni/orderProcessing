@@ -125,8 +125,6 @@ ORDER_RESPONSE=$(curl -s -X POST http://127.0.0.1:8000/api/orders \
     "payment_transaction_id": "txn_initial"
   }')
 
-# Extract order ID (requires jq)
-ORDER_ID=$(echo $ORDER_RESPONSE | jq -r '.order_id')
 
 # 2. Process payment
 curl -X POST http://127.0.0.1:8000/api/orders/$ORDER_ID/pay \
