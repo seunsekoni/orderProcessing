@@ -75,6 +75,20 @@ curl -X POST http://127.0.0.1:8000/api/orders/order_68bc8c17f2091/cancel \
   -H "Accept: application/json"
 ```
 
+### 4. Cancel Order
+```bash
+curl -X GET http://127.0.0.1:8000/api/orders/{order_id} \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json"
+```
+
+**Example:**
+```bash
+curl -X POST http://127.0.0.1:8000/api/orders/order_68bc8c17f2091/cancel \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json"
+```
+
 ## Error Responses
 
 ### Order Not Found (404)

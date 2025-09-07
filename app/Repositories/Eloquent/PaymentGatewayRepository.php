@@ -33,6 +33,8 @@ class PaymentGatewayRepository implements PaymentGatewayInterface
 
     public function refund(Order $order): bool
     {
+        $order->status = 'refunded';
+        $order->save();
         return true;
     }
 }

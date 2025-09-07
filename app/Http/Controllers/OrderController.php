@@ -84,4 +84,20 @@ class OrderController extends Controller
             'status' => $order->status,
         ]);
     }
+
+    /**
+     * Get an order
+     */
+    public function get(string $orderId)
+    {
+        $order = $this->orderManager->find($orderId);
+        if (!$order) {
+            return response()->json(['error' => 'Order not found'], 404);
+        }
+
+        return response()->json([
+            'success' => true,
+            'order' => $order,
+        ]);
+    }
 }

@@ -8,4 +8,5 @@ Route::prefix('orders')->group(function () {
     Route::post('/{orderId}/pay', [OrderController::class, 'pay']);
     Route::post('/{orderId}/fulfill', [OrderController::class, 'fulfill']);
     Route::post('/{orderId}/cancel', [OrderController::class, 'cancel']);
+    Route::get('/{orderId}', [OrderController::class, 'get']);
 });

@@ -33,7 +33,6 @@ class OrderManager
             $order->payment_transaction_id = $paymentResult->transactionId;
             $order->save();
         } else {
-            $order->status = 'failed';
             $this->handleOrderFailure($order, $paymentResult->failureReason ?? "Unknown error");
         }
 
@@ -47,7 +46,12 @@ class OrderManager
 
     public function handleOrderFailure(Order $order, string $reason)
     {
-        return $this->orderRepository->handleOrderFailure($order, $reason);
+        $this->orderRepository->handleOrderFailure($order, $reason);
+
+        // if order has been paid, refund the payment
+        if ($order->status === 'paid') {
+            $this->paymentGatewayRepository->refundPayment($order);
+        }
     }
 
     public function find(string $id): ?Order
